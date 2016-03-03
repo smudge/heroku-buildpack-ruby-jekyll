@@ -8,9 +8,7 @@ With this [buildpack](http://devcenter.heroku.com/articles/buildpacks) you no lo
 Usage
 -----
 
-Create a new Cedar-stack app with this buildpack
-
-    heroku create -s cedar --buildpack http://github.com/Smudge/heroku-buildpack-ruby-jekyll.git
+    heroku create --buildpack http://github.com/Smudge/heroku-buildpack-ruby-jekyll.git
 
 or add this buildpack to your current app
 
@@ -18,25 +16,14 @@ or add this buildpack to your current app
 
 Create a Ruby web app with dependencies managed by [Bundler](http://gembundler.com/) and a Jekyll site. [Heroku-Jekyll-Hello-World](https://github.com/burkemw3/Heroku-Jekyll-Hello-World) can be used as a sample starter.
 
-Push to heroku
-
     git push heroku master
 
 Watch it "Building jekyll site"
 
-    Counting objects: 12, done.
-    Delta compression using up to 2 threads.
-    Compressing objects: 100% (8/8), done.
-    Writing objects: 100% (8/8), 1.10 KiB, done.
-    Total 8 (delta 4), reused 0 (delta 0)
-    
-    -----> Heroku receiving push
-    -----> Fetching custom build pack... done
+    -----> Fetching custom git buildpack... done
     -----> Ruby/Rack app detected
-    -----> Installing dependencies using Bundler version 1.1.rc
-           Running: bundle install --without development:test --path vendor/bundle --binstubs bin/ --deployment
-           Fetching gem metadata from http://rubygems.org/.......
-           Using RedCloth (4.2.8)
+    -----> Installing dependencies using Bundler version 1.3.0.pre.5
+           Running: bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin --deployment
            Using posix-spawn (0.3.6)
            Using albino (1.3.3)
            Using fast-stemmer (1.0.0)
@@ -50,24 +37,27 @@ Watch it "Building jekyll site"
            Using maruku (0.6.0)
            Using jekyll (0.11.0)
            Using rack (1.3.5)
+           Using rack-contrib (1.1.0)
+           Using rack-rewrite (1.2.1)
            Using thin (1.3.1)
-           Using bundler (1.1.rc)
+           Using bundler (1.3.0.pre.5)
            Your bundle is complete! It was installed into ./vendor/bundle
            Cleaning up the bundler cache.
+           Would have removed bundler (1.2.1)
            Building jekyll site
+           Configuration from /tmp/build_2khwpm40t8wev/_config.yml
+           Building site: . -> ./_site
+           Successfully generated site: . -> ./_site
     -----> Discovering process types
            Procfile declares types     -> web
            Default types for Ruby/Rack -> console, rake
-    -----> Compiled slug size is 7.2MB
-    -----> Launching... done, v47
+
+    -----> Compiled slug size: 6.1MB
+    -----> Launching... done, v99
     -----> Deploy hooks scheduled, check output in your logs
-           http://www.mwmanning.com deployed to Heroku
-    
-    To git@heroku.com:mattmanning.git
-       8f84bc4..9350a12  master -> master
+           http://mattmanning.herokuapp.com deployed to Heroku
 
 See Also
 --------
 
 The blog post introducing this buildpack: [http://mwmanning.com/2011/11/29/Run-Your-Jekyll-Site-On-Heroku.html](http://mwmanning.com/2011/11/29/Run-Your-Jekyll-Site-On-Heroku.html).
-
